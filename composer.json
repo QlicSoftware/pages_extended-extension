@@ -1,0 +1,10 @@
+{
+    "name": "newebtime/pages-extension",
+    "type": "streams-addon",
+    "description": "Extend the pages module.",
+    "autoload": {
+        "psr-4": {
+            "Newebtime\\PagesExtension\\": "src/"
+        }
+    }
+}
