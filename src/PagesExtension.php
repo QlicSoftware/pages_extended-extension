@@ -33,8 +33,14 @@ class PagesExtension extends Extension
      */
     public function route(PageInterface $page)
     {
+        if (app()->runningInConsole()) {
+            $paths = $page->translations()->pluck('path', 'locale')->toArray();
+        } else {
+            $paths = $page->translations()->where('path', '/'.request()->path())->pluck('path', 'locale')->toArray();
+        }
+
         if (!$page->isExact()) {
-            foreach ($page->getTranslations()->pluck('path', 'locale')->filter()->toArray() as $locale => $path) {
+            foreach ($paths as $locale => $path) {
                 \Route::any(
                     $path . '/{any?}',
                     [
@@ -52,7 +58,7 @@ class PagesExtension extends Extension
             return;
         }
 
-        foreach ($page->getTranslations()->pluck('path', 'locale')->filter()->toArray() as $locale => $path) {
+        foreach ($paths as $locale => $path) {
             \Route::any(
                 $path,
                 [
