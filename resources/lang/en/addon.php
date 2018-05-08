@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title'       => 'Pages',
-    'name'        => 'Pages Extension',
-    'description' => ''
+    'title'       => 'Pages Extended',
+    'name'        => 'Pages Extended Extension',
+    'description' => 'Extend the pages module'
 ];

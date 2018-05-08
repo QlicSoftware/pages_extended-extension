@@ -1,6 +1,6 @@
 <?php
 
-namespace Newebtime\PagesExtension\Page\Command;
+namespace Newebtime\PagesExtendedExtension\Page\Command;
 
 use Anomaly\PagesModule\Page\Contract\PageInterface;
 

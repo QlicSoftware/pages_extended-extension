@@ -1,7 +1,8 @@
 {
-    "name": "newebtime/pages-extension",
+    "name": "newebtime/pages_extented-extension",
     "type": "streams-addon",
     "description": "Extend the pages module.",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Newebtime\\PagesExtension\\": "src/"

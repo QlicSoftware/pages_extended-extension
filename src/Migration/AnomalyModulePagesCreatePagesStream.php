@@ -1,6 +1,6 @@
 <?php
 
-namespace Newebtime\PagesExtension\Migration;
+namespace Newebtime\PagesExtendedExtension\Migration;
 
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace Newebtime\PagesExtension;
+namespace Newebtime\PagesExtendedExtension;
 
 use Anomaly\DefaultPageHandlerExtension\Command\MakePage;
 use Anomaly\PagesModule\Page\Contract\PageInterface;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
 
-class PagesExtension extends Extension
+class PagesExtendedExtension extends Extension
 {
     /**
      * This extension provides the default

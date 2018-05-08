@@ -1,8 +1,8 @@
 <?php
 
-namespace Newebtime\PagesExtension\Test\Feature;
+namespace Newebtime\PagesExtendedExtension\Test\Feature;
 
-class PagesExtensionTest extends \TestCase
+class PagesExtendedExtensionTest extends \TestCase
 {
     public function testFeature()
     {

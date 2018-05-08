@@ -2,7 +2,7 @@
 
 use Anomaly\Streams\Platform\Database\Migration\Migration;
 
-class NewebtimeExtensionPagesConvertPagesModule extends Migration
+class NewebtimeExtensionPagesExtendedConvertPagesModule extends Migration
 {
     /**
      * Run the migrations.

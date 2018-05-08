@@ -1,6 +1,6 @@
 <?php
 
-namespace Newebtime\PagesExtension\Page;
+namespace Newebtime\PagesExtendedExtension\Page;
 
 use Anomaly\PagesModule\Page\PageResolver as DefaultResolver;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Newebtime\PagesExtension\Page;
+namespace Newebtime\PagesExtendedExtension\Page;
 
 use Anomaly\PagesModule\Page\Contract\PageRepositoryInterface;
 use Anomaly\PagesModule\Type\Contract\TypeRepositoryInterface;

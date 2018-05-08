@@ -1,15 +1,15 @@
 <?php
 
-namespace Newebtime\PagesExtension;
+namespace Newebtime\PagesExtendedExtension;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
-use Newebtime\PagesExtension\Migration\AnomalyModulePagesCreatePagesStream;
-use Newebtime\PagesExtension\Page\Command\SetPath;
-use Newebtime\PagesExtension\Page\PageResolver;
-use Newebtime\PagesExtension\Page\PageSeeder;
-use Newebtime\PagesExtension\Type\TypeSeeder;
+use Newebtime\PagesExtendedExtension\Migration\AnomalyModulePagesCreatePagesStream;
+use Newebtime\PagesExtendedExtension\Page\Command\SetPath;
+use Newebtime\PagesExtendedExtension\Page\PageResolver;
+use Newebtime\PagesExtendedExtension\Page\PageSeeder;
+use Newebtime\PagesExtendedExtension\Type\TypeSeeder;
 
-class PagesExtensionServiceProvider extends AddonServiceProvider
+class PagesExtendedExtensionServiceProvider extends AddonServiceProvider
 {
     /**
      * The addon alias bindings.
