@@ -44,12 +44,40 @@ class NewebtimeExtensionPagesExtendedConvertPagesModule extends Migration
             'stream_id' => $stream->getId(),
             'field_id'  => $ttl->getId(),
         ]);
+
+        $cacheType = $this->fields()->create([
+            'en' => [
+                'name'         => 'newebtime.extension.pages_extended::field.cache_type.name',
+                'placeholder'  => 'newebtime.extension.pages_extended::field.cache_type.name',
+                'instructions' => 'newebtime.extension.pages_extended::field.cache_type.instructions'
+            ],
+            'namespace' => 'pages',
+            'slug'      => 'cache_type',
+            'type'      => 'anomaly.field_type.select',
+            'config'    => [
+                'default_value' => 'none',
+                'options'       => [
+                    'none'    => 'newebtime.extension.pages_extended::field.cache_type.option.none',
+                    'partial' => 'newebtime.extension.pages_extended::field.cache_type.option.partial',
+                    'full'    => 'newebtime.extension.pages_extended::field.cache_type.option.full',
+                    'static'  => 'newebtime.extension.pages_extended::field.cache_type.option.static',
+                ],
+            ],
+            'locked'    => 1
+        ]);
+
+        $this->assignments()->create([
+            'stream_id' => $stream->getId(),
+            'field_id'  => $cacheType->getId(),
+            'required'  => true,
+        ]);
     }
 
     /**
      * Reverse the migrations.
      *
      * @return void
+     * @throws Exception
      */
     public function down()
     {
@@ -66,7 +94,10 @@ class NewebtimeExtensionPagesExtendedConvertPagesModule extends Migration
         $assignment->setAttribute('translatable', false)->save();
 
         // Cache
-        $ttl  = $this->fields()->findBySlugAndNamespace('ttl', 'pages');
+        $ttl = $this->fields()->findBySlugAndNamespace('ttl', 'pages');
         $ttl->delete();
+
+        $cacheType = $this->fields()->findBySlugAndNamespace('cache_type', 'pages');
+        $cacheType->delete();
     }
 }

@@ -5,7 +5,8 @@ namespace Newebtime\PagesExtendedExtension;
 use Anomaly\DefaultPageHandlerExtension\Command\MakePage;
 use Anomaly\PagesModule\Page\Contract\PageInterface;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
-use Spatie\ResponseCache\Middlewares\CacheResponse;
+use Silber\PageCache\Middleware\CacheResponse as StaticCacheResponse;
+use Spatie\ResponseCache\Middlewares\CacheResponse as FullCacheResponse;
 
 class PagesExtendedExtension extends Extension
 {
@@ -40,6 +41,18 @@ class PagesExtendedExtension extends Extension
             $paths = $page->translations()->where('path', '/'. ltrim(request()->path(), '/'))->pluck('path', 'locale')->toArray();
         }
 
+        if (!$paths) {
+            return;
+        }
+
+        if ($page->cache_type !== 'none' && $page->ttl) {
+            $middleware = $page->cache_type === 'static' ?
+                [StaticCacheResponse::class] :
+                [FullCacheResponse::class.':'.$page->ttl];
+        } else {
+            $middleware = [];
+        }
+
         if (!$page->isExact()) {
             foreach ($paths as $locale => $path) {
                 \Route::any(
@@ -49,12 +62,10 @@ class PagesExtendedExtension extends Extension
                         'streams::addon'               => 'anomaly.module.pages',
                         'anomaly.module.pages::page'   => $page->getId(),
                         'anomaly.module.pages::locale' => $locale,
+                        'middleware'                   => $middleware,
                         'where'                        => [
                             'any' => '(.*)',
                         ],
-                        'middleware' => $page->ttl ? [
-                            CacheResponse::class.':'.$page->ttl,
-                        ] : [],
                     ]
                 );
             }
@@ -70,9 +81,7 @@ class PagesExtendedExtension extends Extension
                     'streams::addon'               => 'anomaly.module.pages',
                     'anomaly.module.pages::page'   => $page->getId(),
                     'anomaly.module.pages::locale' => $page->isHome() ? '*' : $locale,
-                    'middleware' => $page->ttl ? [
-                        CacheResponse::class.':'.$page->ttl,
-                    ] : [],
+                    'middleware'                   => $middleware,
                 ]
             );
         }

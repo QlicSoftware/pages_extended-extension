@@ -41,5 +41,6 @@ class PagesExtendedExtensionServiceProvider extends AddonServiceProvider
      */
     protected $providers = [
         'Spatie\ResponseCache\ResponseCacheServiceProvider',
+        'Silber\PageCache\LaravelServiceProvider',
     ];
 }

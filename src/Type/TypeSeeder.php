@@ -79,7 +79,7 @@ class TypeSeeder extends Seeder
                         'description' => 'A simple page type.',
                     ],
                     'slug'         => 'default',
-                    'handler'      => 'newebtime.extension.pages',
+                    'handler'      => 'newebtime.extension.pages_extended',
                     'theme_layout' => 'theme::layouts/default.twig',
                     'layout'       => '<h1>{{ page.title }}</h1>
 

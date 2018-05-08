@@ -18,6 +18,7 @@ class PageEntryFormSections extends \Anomaly\PagesModule\Page\Form\PageEntryForm
         $builder->addSectionTab('page', 'cache', [
             'title'  => 'newebtime.extension.pages_extended::tab.cache',
             'fields' => [
+                'page_cache_type',
                 'page_ttl',
             ],
         ]);
