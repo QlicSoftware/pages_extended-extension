@@ -3,6 +3,7 @@
 namespace Newebtime\PagesExtendedExtension;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
+use Newebtime\PagesExtendedExtension\Hasher\RequestHasher;
 use Newebtime\PagesExtendedExtension\Migration\AnomalyModulePagesCreatePagesStream;
 use Newebtime\PagesExtendedExtension\Page\Command\SetPath;
 use Newebtime\PagesExtendedExtension\Page\Form\PageEntryFormSections;
@@ -32,6 +33,7 @@ class PagesExtendedExtensionServiceProvider extends AddonServiceProvider
         \Anomaly\PagesModule\Type\TypeSeeder::class                 => TypeSeeder::class,
         \AnomalyModulePagesCreatePagesStream::class                 => AnomalyModulePagesCreatePagesStream::class,
         \Anomaly\PagesModule\Page\Form\PageEntryFormSections::class => PageEntryFormSections::class,
+        \Spatie\ResponseCache\RequestHasher::class                  => RequestHasher::class,
     ];
 
     /**

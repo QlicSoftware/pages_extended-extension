@@ -5,7 +5,7 @@ namespace Newebtime\PagesExtendedExtension;
 use Anomaly\DefaultPageHandlerExtension\Command\MakePage;
 use Anomaly\PagesModule\Page\Contract\PageInterface;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
-use Silber\PageCache\Middleware\CacheResponse as StaticCacheResponse;
+use Newebtime\PagesExtendedExtension\Middleware\StaticCacheResponse;
 use Spatie\ResponseCache\Middlewares\CacheResponse as FullCacheResponse;
 
 class PagesExtendedExtension extends Extension
@@ -38,7 +38,7 @@ class PagesExtendedExtension extends Extension
         if (app()->runningInConsole()) {
             $paths = $page->translations()->pluck('path', 'locale')->toArray();
         } else {
-            $paths = $page->translations()->where('path', '/'. ltrim(request()->path(), '/'))->pluck('path', 'locale')->toArray();
+            $paths = $page->translations()->where('path', request()->getPathInfo())->pluck('path', 'locale')->toArray();
         }
 
         if (!$paths) {
