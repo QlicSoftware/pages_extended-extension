@@ -3,6 +3,9 @@
     "type": "streams-addon",
     "description": "Extend the pages module.",
     "license": "MIT",
+    "require": {
+        "spatie/laravel-responsecache": "^4.0"
+    },
     "autoload": {
         "psr-4": {
             "Newebtime\\PagesExtendedExtension\\": "src/"

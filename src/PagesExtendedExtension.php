@@ -5,6 +5,7 @@ namespace Newebtime\PagesExtendedExtension;
 use Anomaly\DefaultPageHandlerExtension\Command\MakePage;
 use Anomaly\PagesModule\Page\Contract\PageInterface;
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
+use Spatie\ResponseCache\Middlewares\CacheResponse;
 
 class PagesExtendedExtension extends Extension
 {
@@ -51,6 +52,9 @@ class PagesExtendedExtension extends Extension
                         'where'                        => [
                             'any' => '(.*)',
                         ],
+                        'middleware' => $page->ttl ? [
+                            CacheResponse::class.':'.$page->ttl,
+                        ] : [],
                     ]
                 );
             }
@@ -66,6 +70,9 @@ class PagesExtendedExtension extends Extension
                     'streams::addon'               => 'anomaly.module.pages',
                     'anomaly.module.pages::page'   => $page->getId(),
                     'anomaly.module.pages::locale' => $page->isHome() ? '*' : $locale,
+                    'middleware' => $page->ttl ? [
+                        CacheResponse::class.':'.$page->ttl,
+                    ] : [],
                 ]
             );
         }

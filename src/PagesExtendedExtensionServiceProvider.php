@@ -5,6 +5,7 @@ namespace Newebtime\PagesExtendedExtension;
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Newebtime\PagesExtendedExtension\Migration\AnomalyModulePagesCreatePagesStream;
 use Newebtime\PagesExtendedExtension\Page\Command\SetPath;
+use Newebtime\PagesExtendedExtension\Page\Form\PageEntryFormSections;
 use Newebtime\PagesExtendedExtension\Page\PageResolver;
 use Newebtime\PagesExtendedExtension\Page\PageSeeder;
 use Newebtime\PagesExtendedExtension\Type\TypeSeeder;
@@ -26,9 +27,19 @@ class PagesExtendedExtensionServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $bindings = [
-        \Anomaly\PagesModule\Page\PageResolver::class => PageResolver::class,
-        \Anomaly\PagesModule\Page\PageSeeder::class   => PageSeeder::class,
-        \Anomaly\PagesModule\Type\TypeSeeder::class   => TypeSeeder::class,
-        \AnomalyModulePagesCreatePagesStream::class   => AnomalyModulePagesCreatePagesStream::class,
+        \Anomaly\PagesModule\Page\PageResolver::class               => PageResolver::class,
+        \Anomaly\PagesModule\Page\PageSeeder::class                 => PageSeeder::class,
+        \Anomaly\PagesModule\Type\TypeSeeder::class                 => TypeSeeder::class,
+        \AnomalyModulePagesCreatePagesStream::class                 => AnomalyModulePagesCreatePagesStream::class,
+        \Anomaly\PagesModule\Page\Form\PageEntryFormSections::class => PageEntryFormSections::class,
+    ];
+
+    /**
+     * Addon providers.
+     *
+     * @var array
+     */
+    protected $providers = [
+        'Spatie\ResponseCache\ResponseCacheServiceProvider',
     ];
 }
