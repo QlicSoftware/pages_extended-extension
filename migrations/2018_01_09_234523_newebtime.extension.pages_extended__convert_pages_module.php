@@ -25,6 +25,11 @@ class NewebtimeExtensionPagesExtendedConvertPagesModule extends Migration
 
         // Cache
         $ttl = $this->fields()->create([
+            'en' => [
+                'name'         => 'newebtime.extension.pages_extended::field.ttl.name',
+                'placeholder'  => 'newebtime.extension.pages_extended::field.ttl.name',
+                'instructions' => 'newebtime.extension.pages_extended::field.ttl.instructions'
+            ],
             'namespace' => 'pages',
             'slug'      => 'ttl',
             'type'      => 'anomaly.field_type.integer',
