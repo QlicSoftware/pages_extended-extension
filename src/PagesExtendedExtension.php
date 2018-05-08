@@ -36,9 +36,9 @@ class PagesExtendedExtension extends Extension
     public function route(PageInterface $page)
     {
         if (app()->runningInConsole()) {
-            $paths = $page->translations()->pluck('path', 'locale')->toArray();
+            $paths = $page->translations->pluck('path', 'locale')->toArray();
         } else {
-            $paths = $page->translations()->where('path', request()->getPathInfo())->pluck('path', 'locale')->toArray();
+            $paths = $page->translations->where('path', request()->getPathInfo())->pluck('path', 'locale')->toArray();
         }
 
         if (!$paths) {
